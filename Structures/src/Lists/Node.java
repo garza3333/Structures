@@ -13,18 +13,18 @@ package Lists;
 public class Node {
     private Node previous;
     private Node next;
-    private Object value;
+    private int value;
     
     
     
     public Node(){
-        this(null);
+        this(0);
     }
     /**
      * 
      * @param value - es el valor a almacenar
      */
-    public Node(Object value){
+    public Node(int value){
         this.value = value;
         this.next = null;
         this.previous = null;
@@ -34,14 +34,14 @@ public class Node {
      * 
      * @param value - edita el valor del Node
      */
-    public void setValue(Object value){
+    public void setValue(int value){
         this.value =  value;
     }
     /**
      * 
      * @return - retorna el valor dentro del nodo 
      */
-    public Object getValue(){
+    public int getValue(){
         return this.value;
     }
     /**

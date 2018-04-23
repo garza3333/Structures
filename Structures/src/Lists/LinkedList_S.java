@@ -26,14 +26,14 @@ public class LinkedList_S {
      * El método publico que llama al privado para agregar al final
      * @param value - valor a añadir
      */
-    public void add(Object value){
+    public void add(int value){
         this.ad(value);
     }
     /**
      * El método que llama al privado para agregar al inicio
      * @param value - valor a agregar
      */
-    public void addFirst(Object value){
+    public void addFirst(int value){
         this.addF(value);
     }
     /**
@@ -41,7 +41,7 @@ public class LinkedList_S {
      * @param value - valor a agregar
      * @param index - posición a la cual agregar
      */
-    public void addI(Object value , int index){
+    public void addI(int value , int index){
         this.adI(value, index);
     }
     /**
@@ -49,8 +49,8 @@ public class LinkedList_S {
      * @param value - valor a buscar
      * @return - devuelve el valor 
      */
-    public Object findV(Object value){
-        Object r = this.fdV(value);
+    public int findV(int value){
+        int r = this.fdV(value);
         return r;
     }
     /**
@@ -72,7 +72,7 @@ public class LinkedList_S {
      * Llama al método privado que elimina el Node con el valor indicado
      * @param value - valor a buscar para eliminar
      */
-    public void delete(Object value){
+    public void delete(int value){
         this.del(value);
     }
     /**
@@ -87,7 +87,7 @@ public class LinkedList_S {
      * @param value - valor para identificar al Node
      * @return - retorna la referencia al Node
      */
-    public Node getNode(Object value){
+    public Node getNode(int value){
         Node r = this.findNode(value);
         return r;
     }
@@ -104,7 +104,7 @@ public class LinkedList_S {
      * añade al final de la lista
      * @param value - valor a añadir
      */
-    private void ad(Object value){
+    private void ad(int value){
         if(isEmpty()){
             head = new Node(value);
         }else{
@@ -119,7 +119,7 @@ public class LinkedList_S {
      * añade el valor a la cabeza de la lista y corre los demás hacia adelante
      * @param value - es el valor a insertar en un Node
      */
-    private void addF(Object value){
+    private void addF(int value){
         if(isEmpty()){
             head = new Node(value);
         }else{
@@ -136,7 +136,7 @@ public class LinkedList_S {
      * @param value - valor a añadir
      * @param index - posición al cual añadir
      */
-    private void adI(Object value ,int index){
+    private void adI(int value ,int index){
         if(isEmpty() && index==0){
             head = new Node(value);        
         }
@@ -167,7 +167,7 @@ public class LinkedList_S {
      * @param value 
      * @return - Hasta que el valor coincida retorna los datos
      */
-    private Object fdV(Object value){
+    private int fdV(int value){
         Node temp = head;
         
         while(temp.getValue()!=value){
@@ -206,7 +206,7 @@ public class LinkedList_S {
      * @param value - parametro para que reconozca el nodo
      * @return - retorna la referencia al nodo
      */
-        private Node findNode(Object value){
+        private Node findNode(int value){
 
         Node temp = head;
         
@@ -256,17 +256,17 @@ public class LinkedList_S {
         Node temp = head;
         System.out.print("[");
         while(temp.getNext()!=null){
-            System.out.print(temp.getValue().toString()+",");
+            System.out.print(String.valueOf(temp.getValue())+",");
             temp = temp.getNext();
-        } System.out.println(temp.getValue().toString()+"]");
+        } System.out.println(String.valueOf(temp.getValue())+"]");
     }
     /**
      * Método para eliminar un valor en la lista
      * @param value - valor a encontrar y eliminar
      */
-    private void del(Object value){
+    private void del(int value){
         Node temp = head;
-        if(value.equals(temp.getValue())){
+        if(value == temp.getValue()){
             head = temp.getNext();
         }else{
             while(temp.getNext().getValue()!= value){

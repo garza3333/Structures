@@ -1,6 +1,8 @@
 
 package Trees;
 
+import Lists.LinkedList_S;
+
 /**
  * @author Daniel
  */
@@ -8,8 +10,8 @@ public class BinarySearch_Tree {
 	/**
 	 * Métodos públicos del árbol
 	 */
-	
-	Node root;
+	private int size;
+	private Node root;
 	/**
 	 * Constructor del árbol le da valor nulo a la raíz
 	 */
@@ -57,7 +59,12 @@ public class BinarySearch_Tree {
          * @param key 
          */
         public void remove(int key){
+            if(this.contains(key)){
+             size--;
              this.del(key,root);
+            }else{
+                System.out.println("El elemento no se encuentra");
+            }
         }
 	/**
 	 * Busca cualquier valor en el árbol
@@ -109,6 +116,19 @@ public class BinarySearch_Tree {
 	public int getHeight(Node node) {
 		return -1+this.height(node);
 	}
+        /**
+         * retorna la cantidad de nodos en la lista
+         * @return 
+         */
+        public int getSize(){
+            return this.size;
+        }
+        public void diferencia(){
+            System.out.println( this.max(root)-this.min() );
+        }
+        public BinarySearch_Tree mix(BinarySearch_Tree a , BinarySearch_Tree b){
+            return this.mixer(a,b);
+        }
 	
 
 	
@@ -166,6 +186,7 @@ public class BinarySearch_Tree {
 	private boolean in(int key,Node node) {
 		if(isEmpty()) {
 			this.root = new Node(key);
+                        size++;
 			
 		}else {
 			
@@ -173,6 +194,7 @@ public class BinarySearch_Tree {
 	
 				if(node.getLeft() == null) {
 					node.left = new Node(key);
+                                        size++;
 					return true;
 				}else {
 					return in(key,node.getLeft());
@@ -180,6 +202,7 @@ public class BinarySearch_Tree {
 			}else {
 				if(node.getRight() == null) {
 					node.right = new Node(key);
+                                        size++;
 					return true;
 				}else {
 					return in(key,node.right);
@@ -302,6 +325,7 @@ public class BinarySearch_Tree {
 		
 	}
 	/**
+         * MAX
 	 * Compara dos números y obtiene el mayor
 	 * a menos de que sean iguales
 	 * @param num1
@@ -315,6 +339,76 @@ public class BinarySearch_Tree {
 			return num2;
 		 }
 	}
+        private BinarySearch_Tree mixer(BinarySearch_Tree a , BinarySearch_Tree b){
+            BinarySearch_Tree result = new BinarySearch_Tree();
+            LinkedList_S aa = this.mkList(a.getRoot());
+            LinkedList_S bb = this.mkList(b.getRoot());
+            boolean flaga = false,flagb = false;
+            int conta=1,contb=1;
+            if(a.getRoot().getKey() > b.getRoot().getKey()){
+                result.insert(a.getRoot().getKey());
+                result.insert(b.getRoot().getKey());
+             
+            }else{
+                result.insert(b.getRoot().getKey());
+                result.insert(a.getRoot().getKey());
+            }
+            while(conta != a.getSize() && contb != b.getSize()){
+                if(conta == a.getSize()){
+                    flaga = true;
+                }else if(contb == b.getSize()){
+                    flagb = true;
+                }
+                if(!flaga){
+                if(aa.getNodeI(conta).getValue() != 0){
+                    
+                    result.insert(aa.getNodeI(conta).getValue());
+                    conta++;
+                    
+                }else{
+                    conta++;
+                    }
+                }else if(!flagb){
+                if(bb.getNodeI(contb).getValue() != 0){
+                    result.insert(bb.getNodeI(contb).getValue());
+                    contb++;
+                }else{
+                    contb++;
+                    }
+                }
+
+            }
+            return result;
+        }
+        
+        public LinkedList_S mkList(Node node){
+            LinkedList_S l = new LinkedList_S();
+            return this.MAKEL(node, l);
+
+            
+        }
+        
+        private LinkedList_S MAKEL(Node node , LinkedList_S l){
+            if(l.getSize() == this.getSize() ){
+                 return l;
+            }
+            if(node != null){
+
+		l.add(node.getKey());
+		MAKEL(node.getLeft(),l);
+		MAKEL(node.getRight(),l);                
+            }
+            else{
+                this.size++;
+                l.add(0);                
+
+            }
+            return l;
+        }
+        
+        
+        
+        
 	public void see() {
 		String inicio = this.ini(" ",this.getHeight() *2);
 		System.out.println(inicio+this.getRoot().getKey());

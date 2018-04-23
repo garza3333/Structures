@@ -1,5 +1,6 @@
 
 import Lists.Arreglo;
+import Lists.LinkedList_S;
 import Trees.BinarySearch_Tree;
 import Trees.Node;
 
@@ -73,29 +74,47 @@ public class Main {
 	
 	
 	
-//	b.insert(100);
-//	b.insert(90);
-//	b.insert(110);
-//	b.insert(80);
-//	b.insert(70);
-//	b.insert(50);
-//	b.insert(1);
-//	b.insert(150);
-//	b.insert(350);
-//	b.insert(155);
-//	b.insert(140);
-//	b.insert(141);
-//	b.insert(142);
-//	b.insert(143);
-//	b.insert(144);
-//	b.insert(91);
+	b.insert(100);
+	b.insert(90);
+	b.insert(110);
+	b.insert(80);
+	b.insert(70);
+	b.insert(50);
+	b.insert(1);
+	b.insert(150);
+	b.insert(350);
+	b.insert(155);
+	b.insert(140);
+	b.insert(141);
+	b.insert(142);
+	b.insert(143);
+	b.insert(144);
+	b.insert(91);
 //	System.out.println(b.getHeight(b.getRoot()));
 //        b.remove(21);
 //       b.showTree(b.getRoot());
 	b.see();
+        
         b.preOrder();
-
-
+        LinkedList_S l = b.mkList(b.getRoot());
+        l.see();
+        b.diferencia();
+        
+        
+        BinarySearch_Tree a1 = new BinarySearch_Tree();
+        BinarySearch_Tree a2 = new BinarySearch_Tree();
+        a1.insert(5);
+        a1.insert(7);
+        a1.insert(2);
+        a2.insert(20);
+        a2.insert(22);
+        a2.insert(15);
+        a1.see();
+        System.out.println("------");
+        a2.see();
+        System.out.println("------");
+        BinarySearch_Tree r = b.mix(a1, a2);
+        r.see();
 //	
 //	Node n = b.getRoot();
 //
