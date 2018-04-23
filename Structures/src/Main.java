@@ -90,8 +90,11 @@ public class Main {
 //	b.insert(144);
 //	b.insert(91);
 //	System.out.println(b.getHeight(b.getRoot()));
-        b.remove(21);
+//        b.remove(21);
+//       b.showTree(b.getRoot());
 	b.see();
+        b.preOrder();
+
 
 //	
 //	Node n = b.getRoot();

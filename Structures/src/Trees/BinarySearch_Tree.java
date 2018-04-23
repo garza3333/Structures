@@ -269,7 +269,7 @@ public class BinarySearch_Tree {
 		if(node!=null) {
 			System.out.println(node.getKey());
 			printPreOrder(node.getLeft());
-			printOrder(node.getRight());
+			printPreOrder(node.getRight());
 		}
 	}
 	/**
@@ -324,8 +324,8 @@ public class BinarySearch_Tree {
 	}
 	private String ini(String cadena,int num) {
 		int cont = num;
-		while(cont !=0) {
-			cadena+=" ";
+		while(cont != 0) {
+			cadena+="    ";
 			cont--;
 		}
 		return cadena;
@@ -351,5 +351,52 @@ public class BinarySearch_Tree {
 			this.pprint(node.getRight(), r-1, c+1);
 		}
 		
-	}    
+	}
+        
+        public void showTree(Node n){
+            
+            if(n == root){
+                String s = ini("",height(n));
+                System.out.println(s+n.getKey());
+                if(n.right != null && n.left != null){
+                    showTree(n.left);
+                    showTree(n.right);
+                    System.out.println("");
+                    
+                }else if(n.left != null && n.right == null){
+                    showTree(n.left);
+                    System.out.println("");
+                }else if(n.right != null && n.right == null){
+                    showTree(n.right);
+                    System.out.println("");
+                }else{
+                    System.out.println("");
+                    
+                }
+            }else{
+                if(n.left != null && n.right != null){
+                    String s = ini("",height(n.left));
+                    System.out.print(s+n.left.getKey()+s+n.right.getKey());
+                    showTree(n.left);
+                    showTree(n.right);
+                    System.out.println("");
+                    
+                }else if(n.left != null && n.right == null){
+                    String s = ini("",height(n.left));
+                    System.out.print(s+n.left.getKey()+s);
+                    showTree(n.left);
+                    System.out.println("");
+                                     
+                    
+                }else if(n.right != null && n.left == null){
+                    String s = ini("",height(n.right));
+                    System.out.print(s+s+n.right.getKey());
+                    showTree(n.right);  
+                    System.out.println("");
+                
+            }else{
+                    
+                }
+            }
+        }
 }
