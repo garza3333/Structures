@@ -1,8 +1,7 @@
 
-import Lists.Arreglo;
-import Lists.LinkedList_S;
+
 import Trees.BinarySearch_Tree;
-import Trees.Node;
+
 
 
 
@@ -59,78 +58,76 @@ public class Main {
 
 //Arbol binario de busqueda
 
-	BinarySearch_Tree b = new BinarySearch_Tree();
-	
-	
-	
-	b.insert(21);
-	b.insert(15);
-	b.insert(25);
-	b.insert(14);
-	b.insert(16);
-	b.insert(24);
-	b.insert(26);
-	b.insert(27);
-	
-	
-	
-	b.insert(100);
-	b.insert(90);
-	b.insert(110);
-	b.insert(80);
-	b.insert(70);
-	b.insert(50);
-	b.insert(1);
-	b.insert(150);
-	b.insert(350);
-	b.insert(155);
-	b.insert(140);
-	b.insert(141);
-	b.insert(142);
-	b.insert(143);
-	b.insert(144);
-	b.insert(91);
-//	System.out.println(b.getHeight(b.getRoot()));
-//        b.remove(21);
-//       b.showTree(b.getRoot());
-	b.see();
+//	BinarySearch_Tree b = new BinarySearch_Tree();
+//        b.insert(20);
+//        b.insert(22);
+//        b.insert(21);
+//        b.insert(10);
+//        b.insert(11);
+//        b.insert(12);
+//        b.insert(5);
+//        b.insert(3);
+//        b.insert(1);
+//        b.insert(4);
+//        b.insert(25);
+//        b.insert(23);
+//        b.see();
         
-        b.preOrder();
-        LinkedList_S l = b.mkList(b.getRoot());
-        l.see();
-        b.diferencia();
-        
-        
-        BinarySearch_Tree a1 = new BinarySearch_Tree();
-        BinarySearch_Tree a2 = new BinarySearch_Tree();
-        a1.insert(5);
-        a1.insert(7);
-        a1.insert(2);
-        a2.insert(20);
-        a2.insert(22);
-        a2.insert(15);
-        a1.see();
-        System.out.println("------");
-        a2.see();
-        System.out.println("------");
-        BinarySearch_Tree r = b.mix(a1, a2);
-        r.see();
-//	
-//	Node n = b.getRoot();
-//
-//	System.out.println(n.getKey());
-//	n = n.getRight();
-//	System.out.println(n.getKey());
-//
-//	System.out.println("HD "+n.getRight().getKey()+" HI "+n.getLeft().getKey());
-
+//        BinarySearch_Tree t = new BinarySearch_Tree();
+//        
+//        //Metodo Insert
+//        t.insert(50);
+//        t.insert(60);
+//        t.insert(20);
+//        t.insert(22);
+//        t.insert(67);
+//        t.insert(61);
+//        t.insert(3);
+//        t.see();
+//        //Metodo Remove
+//        System.out.println("----------------------------------------");
+//        t.remove(20);
+//        t.see();
+//        System.out.println("\nMAX: "+t.findMax()+"\n");
+//        System.out.println("MIN: "+t.findMin()+"\n");
+//        //Metodo de diferencia (nodoMayor - nodoMenor)
+//        System.out.println("Diferencia:");
+//        t.diferencia();
+//        
+//        System.out.println("InOrder:");
+//        t.inOrder();
+//        System.out.println("PreOrder:");
+//        t.preOrder();
+//        System.out.println("PostOrder:");
+//        t.postOrder();
+//        
+//        //Metodo Mix , une dos arboles binarios
+//        BinarySearch_Tree a1 = new BinarySearch_Tree();
+//        BinarySearch_Tree a2 = new BinarySearch_Tree();
+//        a1.insert(5);
+//        a1.insert(7);
+//        a1.insert(2);
+//        a1.insert(10);
+//        a1.insert(9);
+//        a1.insert(11);
+//        a1.insert(1);
+//        a1.insert(3);
+//        a1.insert(4);
+//        a2.insert(20);
+//        a2.insert(22);
+//        a2.insert(15);
+//        a2.insert(21);
+//        a2.insert(24);
+//        System.out.println("Árbol A1: ");
+//        a1.see();
+//        System.out.println("------");
+//        System.out.println("Árbol A2: ");
+//        a2.see();
+//        System.out.println("------");
+//        BinarySearch_Tree r = t.mix(a1, a2);
+//        System.out.println("Árbol A1 + A2: ");
+//        r.see();  
 	
-//	System.out.println(b.findMax());
-//        System.out.println(b.findMin());
-    
-        
-        
-        
 
     }
     

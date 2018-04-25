@@ -5,7 +5,7 @@ package Trees;
  *
  * @author Daniel
  */
-public class Node {
+public class Node<T extends Comparable<?>> {
 	int key;
 	Node right,left;
 	//Node parent;

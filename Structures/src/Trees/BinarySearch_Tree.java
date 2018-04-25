@@ -339,12 +339,26 @@ public class BinarySearch_Tree {
 			return num2;
 		 }
 	}
+        /**
+         * MIX metodo que recibe dos Árboles y los une conviertiendolos en un solo
+         * árbol y luego lo retorna
+         * @param a
+         * @param b
+         * @return 
+         */
         private BinarySearch_Tree mixer(BinarySearch_Tree a , BinarySearch_Tree b){
+            
             BinarySearch_Tree result = new BinarySearch_Tree();
+            
             LinkedList_S aa = this.mkList(a.getRoot());
             LinkedList_S bb = this.mkList(b.getRoot());
+            
+            System.out.println(aa.getSize()+" "+bb.getSize());
+            
             boolean flaga = false,flagb = false;
+            
             int conta=1,contb=1;
+            
             if(a.getRoot().getKey() > b.getRoot().getKey()){
                 result.insert(a.getRoot().getKey());
                 result.insert(b.getRoot().getKey());
@@ -353,11 +367,13 @@ public class BinarySearch_Tree {
                 result.insert(b.getRoot().getKey());
                 result.insert(a.getRoot().getKey());
             }
-            while(conta != a.getSize() && contb != b.getSize()){
-                if(conta == a.getSize()){
+            while(!flaga | !flagb){
+                if(conta >= aa.getSize()-1){
                     flaga = true;
-                }else if(contb == b.getSize()){
+
+                }if(contb >= bb.getSize()-1){
                     flagb = true;
+                 
                 }
                 if(!flaga){
                 if(aa.getNodeI(conta).getValue() != 0){
@@ -368,7 +384,7 @@ public class BinarySearch_Tree {
                 }else{
                     conta++;
                     }
-                }else if(!flagb){
+                }if(!flagb){
                 if(bb.getNodeI(contb).getValue() != 0){
                     result.insert(bb.getNodeI(contb).getValue());
                     contb++;
@@ -381,12 +397,28 @@ public class BinarySearch_Tree {
             return result;
         }
         
+        /**
+         * MKLIST
+         * Crea una lista enlazada con los valores de todos los nodos en el arbol
+         * si el nodo es nullo agrega un 0 a la lista
+         * @param node
+         * @return 
+         */
+        
         public LinkedList_S mkList(Node node){
             LinkedList_S l = new LinkedList_S();
             return this.MAKEL(node, l);
 
             
         }
+         /**
+         * MAKEL
+         * Crea una lista enlazada con los valores de todos los nodos en el arbol
+         * si el nodo es nullo agrega un 0 a la lista
+         * @param node
+         * @param l
+         * @return 
+         */
         
         private LinkedList_S MAKEL(Node node , LinkedList_S l){
             if(l.getSize() == this.getSize() ){
@@ -408,89 +440,50 @@ public class BinarySearch_Tree {
         
         
         
-        
+        /**
+         * Llama al metodo print de la clase BTreePrinter
+         * Imprime los nodos y las ramas del arbol de manera precisa.
+         */
 	public void see() {
-		String inicio = this.ini(" ",this.getHeight() *2);
-		System.out.println(inicio+this.getRoot().getKey());
-		this.pprint(this.getRoot(),this.getHeight(),3);
-		
-		
-	}
-	private String ini(String cadena,int num) {
-		int cont = num;
-		while(cont != 0) {
-			cadena+="    ";
-			cont--;
-		}
-		return cadena;
-		
-	}
-	private void pprint(Node node,int r , int c) {
-		System.out.println("");
-		
-		if(node.getLeft()!=null && node.getRight()!=null) {
-			
-		System.out.print(this.ini(" ", r)+node.getLeft().getKey()+this.ini(" ", r)+node.getRight().getKey()+this.ini(" ", r));
-		
-		this.pprint(node.getLeft(), r-1, c+1);
-		this.pprint(node.getRight(), r-1, c+1);
-		
-		}else if(node.getLeft()!=null && node.getRight()==null) {
-			
-			System.out.print(this.ini(" ", r)+node.getLeft().getKey()+this.ini(" ", r)+this.ini(" ", r));
-			this.pprint(node.getLeft(), r-1, c+1);
-		}else if(node.getLeft()==null && node.getRight()!=null) {
-			
-			System.out.print(this.ini(" ", r)+this.ini(" ", r)+node.getRight().getKey()+this.ini(" ", r));
-			this.pprint(node.getRight(), r-1, c+1);
-		}
-		
-	}
-        
-        public void showTree(Node n){
             
-            if(n == root){
-                String s = ini("",height(n));
-                System.out.println(s+n.getKey());
-                if(n.right != null && n.left != null){
-                    showTree(n.left);
-                    showTree(n.right);
-                    System.out.println("");
-                    
-                }else if(n.left != null && n.right == null){
-                    showTree(n.left);
-                    System.out.println("");
-                }else if(n.right != null && n.right == null){
-                    showTree(n.right);
-                    System.out.println("");
-                }else{
-                    System.out.println("");
-                    
-                }
-            }else{
-                if(n.left != null && n.right != null){
-                    String s = ini("",height(n.left));
-                    System.out.print(s+n.left.getKey()+s+n.right.getKey());
-                    showTree(n.left);
-                    showTree(n.right);
-                    System.out.println("");
-                    
-                }else if(n.left != null && n.right == null){
-                    String s = ini("",height(n.left));
-                    System.out.print(s+n.left.getKey()+s);
-                    showTree(n.left);
-                    System.out.println("");
-                                     
-                    
-                }else if(n.right != null && n.left == null){
-                    String s = ini("",height(n.right));
-                    System.out.print(s+s+n.right.getKey());
-                    showTree(n.right);  
-                    System.out.println("");
-                
-            }else{
-                    
-                }
-            }
-        }
+            BTreePrinter.printNode(root);
+            
+//		String inicio = this.ini(" ",this.getHeight() *2);
+//		System.out.println(inicio+this.getRoot().getKey());
+//		this.pprint(this.getRoot(),this.getHeight(),3);
+		
+		
+	}
+//	private String ini(String cadena,int num) {
+//		int cont = num;
+//		while(cont != 0) {
+//			cadena+="    ";
+//			cont--;
+//		}
+//		return cadena;
+//		
+//	}
+//	private void pprint(Node node,int r , int c) {
+//		System.out.println("");
+//		
+//		if(node.getLeft()!=null && node.getRight()!=null) {
+//			
+//		System.out.print(this.ini(" ", r)+node.getLeft().getKey()+this.ini(" ", r)+node.getRight().getKey()+this.ini(" ", r));
+//		
+//		this.pprint(node.getLeft(), r-1, c+1);
+//		this.pprint(node.getRight(), r-1, c+1);
+//		
+//		}else if(node.getLeft()!=null && node.getRight()==null) {
+//			
+//			System.out.print(this.ini(" ", r)+node.getLeft().getKey()+this.ini(" ", r)+this.ini(" ", r));
+//			this.pprint(node.getLeft(), r-1, c+1);
+//		}else if(node.getLeft()==null && node.getRight()!=null) {
+//			
+//			System.out.print(this.ini(" ", r)+this.ini(" ", r)+node.getRight().getKey()+this.ini(" ", r));
+//			this.pprint(node.getRight(), r-1, c+1);
+//		}
+//		
+//	}
+        
+
 }
