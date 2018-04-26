@@ -23,7 +23,7 @@ public class LinkedList_D  extends LinkedList_S{
      * @override
      */ 
     @Override
-    public void add(Object value){
+    public void add(int value){
         this.ad(value);
     }
     /**
@@ -31,7 +31,7 @@ public class LinkedList_D  extends LinkedList_S{
      * @param value - valor a agregar
      */
     @Override
-    public void addFirst(Object value){
+    public void addFirst(int value){
         this.addF(value);
     }
     /**
@@ -40,7 +40,7 @@ public class LinkedList_D  extends LinkedList_S{
      * @param index - posición a la cual agregar
      */
     @Override
-    public void addI(Object value ,int index){
+    public void addI(int value ,int index){
         this.adI(value,index);
     }
     /**
@@ -48,7 +48,7 @@ public class LinkedList_D  extends LinkedList_S{
      * @param value - valor a buscar para eliminar
      */
     @Override
-    public void delete(Object value){
+    public void delete(int value){
         this.del(value);
     }
     /**
@@ -63,7 +63,7 @@ public class LinkedList_D  extends LinkedList_S{
      * añade un valor a la cola de la lista
      * @param value - valor a añadir
      */
-    private void ad(Object value){
+    private void ad(int value){
         if(isEmpty()){
             Node primero = new Node(value);
             head = tail=primero;
@@ -83,7 +83,7 @@ public class LinkedList_D  extends LinkedList_S{
      * añade el valor a la cabeza de la lista y corre los demás hacia adelante
      * @param value - es el valor a insertar en un Node
      */
-    private void addF(Object value){
+    private void addF(int value){
         if(isEmpty()){
             head = tail = new Node(value);
         }else{
@@ -103,7 +103,7 @@ public class LinkedList_D  extends LinkedList_S{
      * @param value - valor a añadir
      * @param index - posición al cual añadir
      */
-    public void adI(Object value ,int index){
+    public void adI(int value ,int index){
         if(isEmpty() && index==0){
             Node primero = new Node(value);
             head = tail = primero;
@@ -134,9 +134,9 @@ public class LinkedList_D  extends LinkedList_S{
      * Método para eliminar un valor en la lista
      * @param value - valor a encontrar y eliminar
      */
-    private void del(Object value){
+    private void del(int value){
         Node temp = head;
-        if(value.equals(temp.getValue())){
+        if(value == temp.getValue()){
             head = temp.getNext();
         }else{
             int cont = 0;

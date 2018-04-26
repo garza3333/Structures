@@ -16,7 +16,7 @@ public class Stack {
     public Stack(){
     this.tail = null;
     }
-    public void push(Object value){
+    public void push(int value){
         this.in(value);
     }
     public Object pop(){
@@ -35,7 +35,7 @@ public class Stack {
         return this.size;
     }
     
-    private void in(Object value){
+    private void in(int value){
         if(isEmpty()){
             this.tail = this.head = new Node(value);
         }else{
@@ -63,9 +63,9 @@ public class Stack {
         Node temp = head;
         System.out.print("[");
         while(temp.getNext()!=null){
-            System.out.print(temp.getValue().toString()+",");
+            System.out.print(String.valueOf(temp.getValue())+",");
             temp = temp.getNext();
-        } System.out.println(temp.getValue().toString()+"]");
+        } System.out.println(String.valueOf(temp.getValue())+"]");
     }
     
 }

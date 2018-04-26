@@ -15,7 +15,7 @@ public class Queue {
     private boolean isEmpty(){
         return this.head == null;
     }
-    public void enqueue(Object value){
+    public void enqueue(int value){
         this.enq(value);
     }
     public void dequeue(){
@@ -27,7 +27,7 @@ public class Queue {
     public void show(){
         this.se();
     }
-    private void enq(Object value){
+    private void enq(int value){
         if(isEmpty()){
             this.head = tail =  new Node(value);
         }else{
@@ -57,8 +57,8 @@ public class Queue {
         Node temp = head;
         System.out.print("[");
         while(temp.getNext()!=null){
-            System.out.print(temp.getValue().toString()+",");
+            System.out.print(String.valueOf(temp.getValue())+",");
             temp = temp.getNext();
-        } System.out.println(temp.getValue().toString()+"]");
+        } System.out.println(String.valueOf(temp.getValue())+"]");
     }
 }
