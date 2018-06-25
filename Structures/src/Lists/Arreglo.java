@@ -11,22 +11,24 @@ package Lists;
  * @author Daniel
  */
 public class Arreglo {
-    private int[] lista;
-    private int cont,tamaño;
+    private final Object[] lista;
+    private int cont;
+    private final int size;
     /**
      * crea una lista con el largo deseado
-     * @param largo 
+     * @param large 
      */
-    public Arreglo(int largo){
-        this.tamaño = largo;
-        this.lista = new int[largo];
+    public Arreglo(int large){
+        this.size = large;
+        this.lista = new Object[large];
+        
     }
     /**
      * inserta un valor al final de la lista
      * @param value - valor a insertar
      */
-    public void add(int value){
-        if(cont==tamaño){
+    public void add(Object value){
+        if(cont==size){
             System.out.println("La lista esta llena");
         }else{
             lista[cont] = value;
@@ -38,10 +40,10 @@ public class Arreglo {
      * @return 
      */
     
-    public boolean isempty(){
+    public boolean isEmpty(){
         
-        for(int i = 0; i<tamaño ; ++i){
-            if(lista[i]!=0){
+        for(int i = 0; i<size ; i++){
+            if(lista[i]!=null){
                 
                 return false;
             }
@@ -53,7 +55,7 @@ public class Arreglo {
      * @param index - posisión en la que se inserta
      */
     public void insertI(int value , int index){
-        if(index>=tamaño || index < 0){
+        if(index>=size || index < 0){
             System.out.println("ese indice no existe");
         }else{
         lista[index] = value;
@@ -64,9 +66,9 @@ public class Arreglo {
      */
     public void see(){
         System.out.print("[");
-        for(int j=0; j<tamaño-1 ;++j){
+        for(int j=0; j<size-1 ;++j){
             System.out.print(lista[j]+",");
-        }System.out.println(lista[tamaño-1]+"]");
+        }System.out.println(lista[size-1]+"]");
     }
     
 }

@@ -7,7 +7,8 @@ package Trees;
  */
 public class Node<T extends Comparable<?>> {
 	int key;
-	Node right,left;
+	Node right;
+        Node left;
 	//Node parent;
 	public Node() {
 		this(0);

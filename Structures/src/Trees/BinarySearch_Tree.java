@@ -347,7 +347,6 @@ public class BinarySearch_Tree {
          * @return 
          */
         private BinarySearch_Tree mixer(BinarySearch_Tree a , BinarySearch_Tree b){
-            
             BinarySearch_Tree result = new BinarySearch_Tree();
             
             LinkedList_S aa = this.mkList(a.getRoot());
@@ -394,7 +393,7 @@ public class BinarySearch_Tree {
                 }
 
             }
-            return result;
+            return result;            
         }
         
         /**

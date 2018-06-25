@@ -6,7 +6,7 @@ package genericList;
  * @param <T>
  */
 public class LinkedList <T> {
-    protected Node head;
+    protected Node_T head;
     protected int size;
     
     
@@ -98,8 +98,8 @@ public class LinkedList <T> {
      * @param value - valor para identificar al Node
      * @return - retorna la referencia al Node
      */
-    public Node getNode(T value){
-        Node r = this.findNode(value);
+    public Node_T getNode(T value){
+        Node_T r = this.findNode(value);
         return r;
     }
     /**
@@ -107,8 +107,8 @@ public class LinkedList <T> {
      * @param index - Posición de la cual sacar la referencia
      * @return - retorna la referencia al Node
      */
-    public Node getNodeI(int index){
-        Node r = this.findNodeI(index);
+    public Node_T getNodeI(int index){
+        Node_T r = this.findNodeI(index);
         return r;
     }
     
@@ -125,12 +125,12 @@ public class LinkedList <T> {
      */
     private void ad(T value){
         if(isEmpty()){
-            head = new Node(value);
+            head = new Node_T(value);
         }else{
-        Node temp = head;
+        Node_T temp = head;
         while(temp.getNext()!=null){
             temp = temp.getNext();
-        }Node last = new Node(value);
+        }Node_T last = new Node_T(value);
          temp.setNext(last);}
          size++;
     }
@@ -140,10 +140,10 @@ public class LinkedList <T> {
      */
     private void addF(T value){
         if(isEmpty()){
-            head = new Node(value);
+            head = new Node_T(value);
         }else{
-            Node temp = head;
-            Node nw = new Node(value);
+            Node_T temp = head;
+            Node_T nw = new Node_T(value);
             nw.setNext(temp);
             head = nw;
     
@@ -157,7 +157,7 @@ public class LinkedList <T> {
      */
     private void adI(T value ,int index){
         if(isEmpty() && index==0){
-            head = new Node(value);        
+            head = new Node_T(value);        
         }
             
         else{
@@ -171,11 +171,11 @@ public class LinkedList <T> {
                 this.ad(value);
             }else{
                 int cont = 0;
-                Node temp = head;
+                Node_T temp = head;
                 while(cont < index-1){
                     temp = temp.getNext();
                     cont++;
-                }Node nuevo = new Node(value);
+                }Node_T nuevo = new Node_T(value);
                 nuevo.setNext(temp.getNext());
                 temp.setNext(nuevo);  
          }
@@ -193,7 +193,7 @@ public class LinkedList <T> {
             System.out.println("Lista vacía");
             return false;
         }else{
-            Node temp = head;
+            Node_T temp = head;
             while(temp.getValue()!=value){
                 if(temp.getValue() == value){
                     return true;
@@ -214,7 +214,7 @@ public class LinkedList <T> {
             
         }else{
         int cont = 0;
-        Node temp = head;
+        Node_T temp = head;
  
         while(cont<=index){
             if(cont==index){
@@ -234,9 +234,9 @@ public class LinkedList <T> {
      * @param value - parametro para que reconozca el nodo
      * @return - retorna la referencia al nodo
      */
-        private Node findNode(T value){
+        private Node_T findNode(T value){
 
-        Node temp = head;
+        Node_T temp = head;
         if(isEmpty()){
             return null;
         }else{
@@ -252,10 +252,10 @@ public class LinkedList <T> {
          * @param index - cantidad de veces a iterar
          * @return - retorna la referencia al Node 
          */
-        private Node findNodeI(int index){
+        private Node_T findNodeI(int index){
     
         int cont = 0;
-        Node temp = head;
+        Node_T temp = head;
         if(index >= size || index<0){
             System.out.println("indice fuera del rango");
             return null;
@@ -276,7 +276,7 @@ public class LinkedList <T> {
      */
     private void se(){
         
-        Node temp = head;
+        Node_T temp = head;
         System.out.print("[");
         while(temp.getNext()!=null){
             System.out.print(String.valueOf(temp.getValue())+",");
@@ -288,7 +288,7 @@ public class LinkedList <T> {
      * @param value - valor a encontrar y eliminar
      */
     private void del(T value){
-        Node temp = head;
+        Node_T temp = head;
         if(value == temp.getValue()){
             head = temp.getNext();
         }else{
@@ -306,7 +306,7 @@ public class LinkedList <T> {
         if(index == 0){
             head = head.getNext();
         }else{
-            Node temp = head;
+            Node_T temp = head;
             int cont = 0;
             while(cont < index-1){
                 temp = temp.getNext();

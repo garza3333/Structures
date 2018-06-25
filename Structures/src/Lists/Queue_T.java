@@ -1,38 +1,40 @@
 package Lists;
 
-
+import genericList.Node_T;
 
 /**
  *
  * @author Daniel
+ * @param <T>
  */
-public class Queue {
+public class Queue_T<T> {
     int size;
-    Node head,tail;
-    public Queue(){
+    Node_T head;
+    Node_T tail;
+    public Queue_T(){
         this.head = tail = null;
     }
     private boolean isEmpty(){
         return this.head == null;
     }
-    public void enqueue(int value){
+    public void enqueue(T value){
         this.enq(value);
     }
     public void dequeue(){
         this.deq();
     }
-    public Object peek(){
+    public T peek(){
         return this.pek();
     }
     public void show(){
         this.se();
     }
-    private void enq(int value){
+    private void enq(T value){
         if(isEmpty()){
-            this.head = tail =  new Node(value);
+            this.head = tail =  new Node_T(value);
         }else{
-            Node aux = tail;
-            Node n = new Node(value);
+            Node_T aux = tail;
+            Node_T n = new Node_T(value);
             tail.setNext(n);
             n.setPrevious(aux);
             this.tail = n;
@@ -41,20 +43,20 @@ public class Queue {
     }
     private void deq(){
         
-        Node aux = head;
+        Node_T aux = head;
         head = aux.getNext();
         aux.setNext(null);
         
     }
-    private Object pek(){
+    private T pek(){
         System.out.println(tail.getValue());
-        return tail.getValue();
+        return (T) tail.getValue();
     
     }
     
         private void se(){
         
-        Node temp = head;
+        Node_T temp = head;
         System.out.print("[");
         while(temp.getNext()!=null){
             System.out.print(String.valueOf(temp.getValue())+",");

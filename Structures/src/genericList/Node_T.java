@@ -4,21 +4,21 @@ package genericList;
  * @author Daniel
  * @param <T> generico
  */
-public class Node <T> { 
-    private Node previous;
-    private Node next;
+public class Node_T <T> { 
+    private Node_T previous;
+    private Node_T next;
     private T value;
     
     
     
-    public Node(){
+    public Node_T(){
         this(null);
     }
     /**
      * 
      * @param value - es el valor a almacenar
      */
-    public Node(T value){
+    public Node_T(T value){
         this.value = value;
         this.next = null;
         this.previous = null;
@@ -42,17 +42,17 @@ public class Node <T> {
      * 
      * @return retorna la posicion del siguiente Node
      */
-    public Node getNext(){
+    public Node_T getNext(){
         return this.next;
     }
-    public void setNext(Node node){
+    public void setNext(Node_T node){
         this.next = node;
     }
-    public void setPrevious(Node node){
+    public void setPrevious(Node_T node){
         
         this.previous = node;
     }
-    public Node getPrevious(){
+    public Node_T getPrevious(){
     return this.previous;
     }
 
