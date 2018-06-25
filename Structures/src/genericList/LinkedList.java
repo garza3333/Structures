@@ -1,10 +1,11 @@
-package Lists;
+package genericList;
 
 /**
  *
  * @author Daniel
+ * @param <T>
  */
-public class LinkedList_S {
+public class LinkedList <T> {
     protected Node head;
     protected int size;
     
@@ -12,22 +13,38 @@ public class LinkedList_S {
     /**
      * Este constructor pasa los valores por defecto a la cabeza y tamaño
      */
-    public LinkedList_S(){
+    public LinkedList(){
         this.head = null;
         this.size = 0;
     }
+    
+     /**
+     * verifica si la lista esta vacía 
+     * @return - retorna true si es cierto si no entonces false
+     */
+    public boolean isEmpty(){
+        return(head==null);
+    }   
+    /**
+     * Obtiene el tamaño actual de la lista
+     * @return int con el tamaño de la lista
+     */
+    public int getSize(){
+        return size;
+    }
+    
     /**
      * El método publico que llama al privado para agregar al final
      * @param value - valor a añadir
      */
-    public void add(int value){
+    public void add(T value){
         this.ad(value);
     }
     /**
      * El método que llama al privado para agregar al inicio
      * @param value - valor a agregar
      */
-    public void addFirst(int value){
+        public void addFirst(T value){
         this.addF(value);
     }
     /**
@@ -35,7 +52,7 @@ public class LinkedList_S {
      * @param value - valor a agregar
      * @param index - posición a la cual agregar
      */
-    public void addI(int value , int index){
+    public void addI(T value , int index){
         this.adI(value, index);
     }
     /**
@@ -43,7 +60,7 @@ public class LinkedList_S {
      * @param value - valor a buscar
      * @return - devuelve el valor 
      */
-    public boolean contains(int value){
+    public boolean contains(T value){
         return this.fdV(value);
         
     }
@@ -66,7 +83,7 @@ public class LinkedList_S {
      * Llama al método privado que elimina el Node con el valor indicado
      * @param value - valor a buscar para eliminar
      */
-    public void delete(int value){
+    public void delete(T value){
         this.del(value);
     }
     /**
@@ -81,7 +98,7 @@ public class LinkedList_S {
      * @param value - valor para identificar al Node
      * @return - retorna la referencia al Node
      */
-    public Node getNode(int value){
+    public Node getNode(T value){
         Node r = this.findNode(value);
         return r;
     }
@@ -94,33 +111,41 @@ public class LinkedList_S {
         Node r = this.findNodeI(index);
         return r;
     }
+    
+    
+    
+    
+    ////////////////  Metodos privados //////////////
+    /////////////////////////////////////////////////
+    
+    
     /**
      * añade al final de la lista
      * @param value - valor a añadir
      */
-    private void ad(int value){
+    private void ad(T value){
         if(isEmpty()){
             head = new Node(value);
         }else{
         Node temp = head;
         while(temp.getNext()!=null){
             temp = temp.getNext();
-        }Node ultimo = new Node(value);
-         temp.setNext(ultimo);}
+        }Node last = new Node(value);
+         temp.setNext(last);}
          size++;
     }
     /**
      * añade el valor a la cabeza de la lista y corre los demás hacia adelante
      * @param value - es el valor a insertar en un Node
      */
-    private void addF(int value){
+    private void addF(T value){
         if(isEmpty()){
             head = new Node(value);
         }else{
             Node temp = head;
-            Node nuevo = new Node(value);
-            nuevo.setNext(temp);
-            head = nuevo;
+            Node nw = new Node(value);
+            nw.setNext(temp);
+            head = nw;
     
         }
         ++size;
@@ -130,7 +155,7 @@ public class LinkedList_S {
      * @param value - valor a añadir
      * @param index - posición al cual añadir
      */
-    private void adI(int value ,int index){
+    private void adI(T value ,int index){
         if(isEmpty() && index==0){
             head = new Node(value);        
         }
@@ -162,7 +187,8 @@ public class LinkedList_S {
      * @param value 
      * @return - Hasta que el valor coincida retorna los datos
      */
-    private boolean fdV(int value){
+    private boolean fdV(T value){
+        
         if(this.isEmpty()){
             System.out.println("Lista vacía");
             return false;
@@ -175,8 +201,7 @@ public class LinkedList_S {
                 temp = temp.getNext();
             }
             return false;
-    }
-    }
+    }}
     /**
      * Realiza una busqueda por posición 
      * @param index - cantidad de veces a iterar 
@@ -209,16 +234,18 @@ public class LinkedList_S {
      * @param value - parametro para que reconozca el nodo
      * @return - retorna la referencia al nodo
      */
-        private Node findNode(int value){
+        private Node findNode(T value){
 
         Node temp = head;
-        
-        while(temp.getValue()!=value){
-            temp = temp.getNext();
-        }
+        if(isEmpty()){
+            return null;
+        }else{
+            while(temp.getValue()!=value){
+                temp = temp.getNext();
+            }
 
-        return temp;
-        
+            return temp;
+        }
     }
         /**
          * Busca la referencia de un nodo con respecto a su posición
@@ -245,16 +272,6 @@ public class LinkedList_S {
         return null;
     }
     /**
-     * verifica si la lista esta vacía 
-     * @return - retorna true si es cierto si no entonces false
-     */
-    public boolean isEmpty(){
-        return(head==null);
-    }   
-    public int getSize(){
-        return size;
-    }
-    /**
      * muestra la lista completa
      */
     private void se(){
@@ -270,7 +287,7 @@ public class LinkedList_S {
      * Método para eliminar un valor en la lista
      * @param value - valor a encontrar y eliminar
      */
-    private void del(int value){
+    private void del(T value){
         Node temp = head;
         if(value == temp.getValue()){
             head = temp.getNext();

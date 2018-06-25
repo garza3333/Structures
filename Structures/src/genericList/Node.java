@@ -1,24 +1,24 @@
-package Lists;
-
+package genericList;
 /**
  * Clase Node para almacenamiento de información
  * @author Daniel
+ * @param <T> generico
  */
-public class Node {
+public class Node <T> { 
     private Node previous;
     private Node next;
-    private int value;
+    private T value;
     
     
     
     public Node(){
-        this(0);
+        this(null);
     }
     /**
      * 
      * @param value - es el valor a almacenar
      */
-    public Node(int value){
+    public Node(T value){
         this.value = value;
         this.next = null;
         this.previous = null;
@@ -28,14 +28,14 @@ public class Node {
      * 
      * @param value - edita el valor del Node
      */
-    public void setValue(int value){
+    public void setValue(T value){
         this.value =  value;
     }
     /**
      * 
      * @return - retorna el valor dentro del nodo 
      */
-    public int getValue(){
+    public T getValue(){
         return this.value;
     }
     /**
